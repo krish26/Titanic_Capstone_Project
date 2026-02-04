@@ -6,3 +6,6 @@ The goal is to predict whether a passenger survived the Titanic disaster based o
 
 ## Team
 Krishna Koumudi Koravi, Yuliya Hagberg, Yevheniia Kornilova, Snehal Sanjay Patil, Apeksha Mangalpady
+
+Test commit
+
