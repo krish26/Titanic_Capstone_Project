@@ -11,4 +11,4 @@ Our tech stack is Python 3.12 for ML and backend, Django 5 for the web app, pand
 
 ## Team
 
-Krishna Koumudi Koravi, Yuliya Hagberg, Yevheniia Kornilova(Test), Snehal Sanjay Patil, Apeksha Mangalpady(TEST)
+Krishna Koumudi Koravi, Yuliya Hagberg, Yevheniia Kornilova(Test), Snehal Sanjay Patil (TEST), Apeksha Mangalpady(TEST)
