@@ -68,48 +68,40 @@ python manage.py migrate          # only if models changed
 We made a few simple decisions to handle missing and categorical data:
 - Missing values in Age were filled using the mean age so that we could keep all rows in the dataset.
 - The Cabin column was removed because it contains many missing values and did not clearly affect survival.
-- Encode Categorical Variable (Sex Column) by conveting it into numerical format as (female= 1 ,male= 0) .
+- Encode Categorical Variable (Sex Column) by conveting it into numerical format as (female= 1, male= 0).
 - Missing values in Embarked were filled with the most common port.
 - The Embarked ports were encoded as numbers from 1 to 3 to make them usable for the model.
 
 These choices helped us keep the data clean and easy to work with while preparing it for machine learning.
 
-
-
 ## Feature Engineering
 
 The following features were engineered to improve model performance while keeping the dataset interpretable:
 
-- AgeGroup: Ages are binned into life-stage categories (Child, Teen, YoungAdult, Adult, Senior) to capture non-linear survival patterns.
+### **AgeGroup**
+Ages are binned into life-stage categories (Child, Teen, YoungAdult, Adult, Senior) to capture non-linear survival patterns.
 
-Why we do this
-
+#### Why we do this
 Titanic survival isn’t linear with age:
+- Children were prioritized for lifeboats
+- Elderly had lower survival
+- Binning simplifies the pattern, making it easier for models to learn survival trends.
 
-Children were prioritized for lifeboats
+### **FareGroup**
+Ticket fares are grouped into quartiles (Low → VeryHigh) to represent socio-economic status and reduce skewness.
 
-Elderly had lower survival
+#### Why we do this
+- Fare distribution is heavily skewed (few very expensive tickets).
 
-Binning simplifies the pattern, making it easier for models to learn survival trends.
+### **Quantile binning**
+- Reduces the effect of extreme outliers
+- Turns fare into socio-economic categories that better capture survival patterns
+- Models can now learn that higher fare → higher survival probability without being dominated by extreme values.
 
+### **FamilySize**
+Total number of family members traveling together (SibSp + Parch + 1).
 
-- FareGroup: Ticket fares are grouped into quartiles (Low → VeryHigh) to represent socio-economic status and reduce skewness.
+### **IsAlone**
+Binary feature indicating whether a passenger was traveling alone.
 
-Why we do this
-
-Fare distribution is heavily skewed (few very expensive tickets).
-
-Quantile binning:
-
-Reduces the effect of extreme outliers
-
-Turns fare into socio-economic categories that better capture survival patterns
-
-Models can now learn that higher fare → higher survival probability without being dominated by extreme values.
-
-
-- FamilySize: Total number of family members traveling together (SibSp + Parch + 1).
-
-- IsAlone: Binary feature indicating whether a passenger was traveling alone.
-
--These features help models learn survival patterns related to age priority, wealth, and group dynamics.
+These features help models learn survival patterns related to age priority, wealth, and group dynamics.
