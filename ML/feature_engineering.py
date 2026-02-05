@@ -10,7 +10,7 @@ def engineer_features(df: pd.DataFrame) :
     )
 
     # Fare binning
-    df['Fare'] = df['Fare'].fillna(df['Fare'].median())
+    
     df['FareGroup'] = pd.qcut(df['Fare'], 4, labels=['Low','Mid','High','VeryHigh'])
 
     # Family features
