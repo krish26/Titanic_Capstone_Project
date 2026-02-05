@@ -72,3 +72,19 @@ We made a few simple decisions to handle missing and categorical data:
 - The Embarked ports were encoded as numbers from 1 to 3 to make them usable for the model.
 
 These choices helped us keep the data clean and easy to work with while preparing it for machine learning.
+
+
+
+## Feature Engineering
+
+The following features were engineered to improve model performance while keeping the dataset interpretable:
+
+- AgeGroup: Ages are binned into life-stage categories (Child, Teen, YoungAdult, Adult, Senior) to capture non-linear survival patterns.
+
+- FareGroup: Ticket fares are grouped into quartiles (Low → VeryHigh) to represent socio-economic status and reduce skewness.
+
+- FamilySize: Total number of family members traveling together (SibSp + Parch + 1).
+
+- IsAlone: Binary feature indicating whether a passenger was traveling alone.
+
+-These features help models learn survival patterns related to age priority, wealth, and group dynamics.
