@@ -68,6 +68,7 @@ python manage.py migrate          # only if models changed
 We made a few simple decisions to handle missing and categorical data:
 - Missing values in Age were filled using the mean age so that we could keep all rows in the dataset.
 - The Cabin column was removed because it contains many missing values and did not clearly affect survival.
+- Encode Categorical Variable (Sex Column) by conveting it into numerical format as (female= 1 ,male= 0) .
 - Missing values in Embarked were filled with the most common port.
 - The Embarked ports were encoded as numbers from 1 to 3 to make them usable for the model.
 
