@@ -81,7 +81,31 @@ The following features were engineered to improve model performance while keepin
 
 - AgeGroup: Ages are binned into life-stage categories (Child, Teen, YoungAdult, Adult, Senior) to capture non-linear survival patterns.
 
+Why we do this
+
+Titanic survival isn’t linear with age:
+
+Children were prioritized for lifeboats
+
+Elderly had lower survival
+
+Binning simplifies the pattern, making it easier for models to learn survival trends.
+
+
 - FareGroup: Ticket fares are grouped into quartiles (Low → VeryHigh) to represent socio-economic status and reduce skewness.
+
+Why we do this
+
+Fare distribution is heavily skewed (few very expensive tickets).
+
+Quantile binning:
+
+Reduces the effect of extreme outliers
+
+Turns fare into socio-economic categories that better capture survival patterns
+
+Models can now learn that higher fare → higher survival probability without being dominated by extreme values.
+
 
 - FamilySize: Total number of family members traveling together (SibSp + Parch + 1).
 
