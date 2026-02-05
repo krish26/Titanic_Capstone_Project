@@ -5,6 +5,14 @@
 This project is a full-stack machine learning application based on the Titanic dataset.  
 The goal is to predict whether a passenger survived the Titanic disaster based on passenger information.
 
+The project covers the complete machine learning workflow:
+- Data exploration and preprocessing
+- Feature engineering
+- Model training and evaluation
+- Deployment of the model in a Django web application
+- Database persistence of predictions
+- Collaborative development using Git and Scrum practices
+
 ## Tech stack
 
 Our tech stack is Python 3.12 for ML and backend, Django 5 for the web app, pandas and scikit-learn for data processing and modeling, SQLite for storing predictions, and Git/GitHub for collaboration, with VS Code as our development environment.
@@ -12,6 +20,10 @@ Our tech stack is Python 3.12 for ML and backend, Django 5 for the web app, pand
 ## Team
 
 Krishna Koumudi Koravi, Yuliya Hagberg, Yevheniia Kornilova, Snehal Sanjay Patil, Apeksha Mangalpady
+
+## Dataset
+
+The project uses the **Titanic dataset** provided by Kaggle: https://www.kaggle.com/c/titanic/data
 
 ## How to set up and run the project locally
 
