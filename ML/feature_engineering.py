@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
+def engineer_features(df: pd.DataFrame) :
     # Age binning
   
     df['AgeGroup'] = pd.cut(
