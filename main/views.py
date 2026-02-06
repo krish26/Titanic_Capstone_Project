@@ -1,10 +1,20 @@
 from django.shortcuts import render
+from . import forms
 
 def index(request):
     return render(request, 'home.html')
 
 def prediction_form(request):
-    return render(request, 'prediction_form.html')
+    form = forms.PredictionForm()
+
+    if request.method == 'POST':
+        form = forms.PredictionForm(request.POST)
+
+        if form.is_valid():
+            print("Validation success!")
+            print('Gender:' + form.cleaned_data['gender'])
+
+    return render(request, 'prediction_form.html', {'form': form})
 
 def results(request):
     return render(request, 'results.html')
