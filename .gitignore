@@ -1,3 +1,8 @@
+
+# Personal experiments (Yevheniia local only)
+my_data/
+my_model.ipynb
+
 # Python
 __pycache__/
 *.pyc
@@ -24,3 +29,4 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints/
+
