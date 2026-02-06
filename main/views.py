@@ -11,8 +11,8 @@ def prediction_form(request):
         form = forms.PredictionForm(request.POST)
 
         if form.is_valid():
-            print("Validation success!")
-            print('Gender:' + form.cleaned_data['gender'])
+            data = form.cleaned_data
+            return render(request, "results.html", {"data": data})
 
     return render(request, 'prediction_form.html', {'form': form})
 

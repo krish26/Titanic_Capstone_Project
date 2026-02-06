@@ -8,10 +8,9 @@
     <div class="card mb-4 shadow-sm">
         <div class="card-body">
             <h2 class="h4 mb-3">Fill out the form</h2>
-            <p>For now this is just a test form. More coming soon..</p>
-                <form method="POST">
-                    {{ form.as_p }}
+                <form method="POST" class="mt-3">
                     {% csrf_token %}
+                    {{ form.as_p }}
                     <input type="submit" class="btn btn-primary" value="Submit">
                 </form>
         </div>
