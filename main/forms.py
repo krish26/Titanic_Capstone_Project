@@ -1,6 +1,4 @@
 from django import forms
-from django.core.validators import MinLengthValidator
-from django.core.exceptions import ValidationError
 
 class PredictionForm(forms.Form):
 
@@ -34,6 +32,7 @@ class PredictionForm(forms.Form):
 
     fare = forms.FloatField(
         min_value=0,
+        max_value=1000,  # TODO: choose a better max_value based on data
         label="Fare"
     )
 

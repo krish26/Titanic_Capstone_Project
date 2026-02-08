@@ -13,6 +13,8 @@ def prediction_form(request):
         if form.is_valid():
             data = form.cleaned_data
             return render(request, "results.html", {"data": data})
+        else:
+            pass
 
     return render(request, 'prediction_form.html', {'form': form})
 
