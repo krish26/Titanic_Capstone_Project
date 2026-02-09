@@ -42,4 +42,5 @@ def results(request):
     return render(request, 'results.html')
 
 def history(request):
-    return render(request, 'history.html')
+    predictions = Prediction.objects.order_by("-created_at")
+    return render(request, "history.html", {"predictions": predictions})
