@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from . import forms
 from .models import Prediction
 from ML.inference import predict_survival
@@ -47,14 +47,15 @@ def prediction_form(request):
                 survival_probability=survival_probability,
             )
 
-            return render(request, "results.html", {"prediction": prediction})
+            return redirect("results", prediction_id=prediction.id)
     else:
         form = forms.PredictionForm()
 
     return render(request, 'prediction_form.html', {'form': form})
 
-def results(request):
-    return render(request, 'results.html')
+def results(request, prediction_id):
+    prediction = get_object_or_404(Prediction, id=prediction_id)
+    return render(request, "results.html", {"prediction": prediction})
 
 def history(request):
     predictions = Prediction.objects.order_by("-created_at")
