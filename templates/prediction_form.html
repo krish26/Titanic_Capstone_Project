@@ -8,6 +8,13 @@
     <div class="card mb-4 shadow-sm">
         <div class="card-body">
             <h2 class="h4 mb-3">Fill out the form</h2>
+
+            {% if form.errors %}
+            <div class="alert alert-warning">
+                Please correct the errors below and resubmit the form.
+            </div>
+            {% endif %}
+            
                 <form method="POST" class="mt-3">
                     {% csrf_token %}
                     {{ form.as_p }}
