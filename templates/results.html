@@ -8,7 +8,33 @@
     <div class="card mb-4 shadow-sm">
         <div class="card-body">
             <h2 class="h4 mb-3">Results</h2>
-            <p>Coming soon..</p>
+            <p>
+                <strong>Survival prediction:</strong>
+                {% if prediction.survived %}
+                    <span class="text-success">Survived</span>
+                {% else %}
+                    <span class="text-danger">Did not survive</span>
+                {% endif %}
+            </p>
+
+            <p><strong>Survival probability:</strong>{{ prediction.survival_probability }}</p>
+
+            <hr>
+
+            <h3 class="h5 mt-3">Passenger details</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Passenger class: {{ prediction.pclass }}</li>
+                <li class="list-group-item">Sex: {{ prediction.sex_label }}</li>
+                <li class="list-group-item">Age: {{ prediction.age }}</li>
+                <li class="list-group-item">Fare: {{ prediction.fare }}</li>
+                <li class="list-group-item">Embarked: {{ prediction.embarked_label }}</li>
+                <li class="list-group-item">Family size: {{ prediction.family_size }}</li>
+                <li class="list-group-item">Traveling alone: {{ prediction.alone_label }}</li>
+            </ul>
+
+            <div class="mt-4">
+                <a href="{% url 'prediction_form' %}" class="btn btn-primary">Make another prediction</a>
+            </div>
         </div>
     </div>
 </div>

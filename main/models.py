@@ -18,5 +18,19 @@ class Prediction(models.Model):
     # ===== Meta =====
     created_at = models.DateTimeField(auto_now_add=True)
 
+    # ===== Label mapping =====
+    def sex_label(self):
+        return "Female" if self.sex == 1 else "Male"
+
+    def embarked_label(self):
+        return {
+            1: "Cherbourg",
+            2: "Queenstown",
+            3: "Southampton"
+        }.get(self.embarked, "Unknown")
+    
+    def alone_label(self):
+        return "Yes" if self.sex == 1 else "No"
+
     def __str__(self):
         return f"Prediction #{self.id} | Survived: {self.survived}"
