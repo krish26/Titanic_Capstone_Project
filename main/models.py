@@ -1,12 +1,23 @@
 from django.db import models
 
 class Prediction(models.Model):
+    # ===== Choices =====
+    SEX_CHOICES = [
+        (0, "Male"),
+        (1, "Female"),
+    ]
+
+    EMBARKED_CHOICES = [
+        (1, "Cherbourg"),
+        (2, "Queenstown"),
+        (3, "Southampton"),
+    ]
     # ===== Input features from form =====
     pclass = models.IntegerField()
-    sex = models.IntegerField()
+    sex = models.IntegerField(choices=SEX_CHOICES)
     age = models.FloatField(null=True, blank=True)
     fare = models.FloatField(null=True, blank=True)
-    embarked = models.IntegerField()
+    embarked = models.IntegerField(choices=EMBARKED_CHOICES)
 
     family_size = models.IntegerField(null=True, blank=True)
     is_alone = models.BooleanField(default=False)
