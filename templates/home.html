@@ -24,6 +24,12 @@
                 <li>Database persistence of predictions</li>
                 <li>Collaborative development using Git and Scrum practices</li>
             </ul>
+
+            <p>
+                The purpose of this project is to demonstrate how a machine learning model can be integrated into 
+                a full-stack web application. The focus is not only on model performance, but also on data processing, 
+                system design, and presenting predictions through a user-friendly interface.
+            </p>
         </div>
     </div>
 
@@ -68,7 +74,33 @@
     <div class="card mb-5 shadow-sm">
         <div class="card-body">
             <h2 class="h4 mb-3">Overview of the system architecture</h2>
-            <p>Coming soon..</p>
+            <p>The system follows a simple full-stack architecture that connects a machine learning workflow with a web application.</p>
+
+            <ol>
+                <li>
+                    <h3 class="h5 mb-3">Front-end (Django templates & Bootstrap)</h3>
+                    <p>Users interact with the application through HTML forms styled with Bootstrap. 
+                        The prediction form collects passenger information such as class, age, sex, fare, and embarkation port.</p>
+                </li>
+                <li>
+                    <h3 class="h5 mb-3">Back-end (Django views & forms)</h3>
+                    <p>Django handles form validation, feature engineering, and application logic. After the form is submitted, 
+                        the backend prepares the input data for the machine learning model.</p>
+                </li>
+                <li>
+                    <h3 class="h5 mb-3">Machine learning (pandas & scikit-learn)</h3>
+                    <p>A trained machine learning model is used to predict survival probability based on the processed input features.</p>
+                </li>
+                <li>
+                    <h3 class="h5 mb-3">Database (SQLite)</h3>
+                    <p>Each prediction, along with the input features and model output, is stored in a SQLite database. 
+                        This allows predictions to be reviewed later on the History page.</p>
+                </li>
+                <li>
+                    <h3 class="h5 mb-3">Results and history pages</h3>
+                    <p>The prediction result is shown immediately after submission and all past predictions can be viewed in a dedicated history view.</p>
+                </li>
+            </ol>
         </div>
     </div>
 </div>

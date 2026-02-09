@@ -13,6 +13,8 @@ The project covers the complete machine learning workflow:
 - Database persistence of predictions
 - Collaborative development using Git and Scrum practices
 
+The purpose of this project is to demonstrate how a machine learning model can be integrated into a full-stack web application. The focus is not only on model performance, but also on data processing, system design, and presenting predictions through a user-friendly interface.
+
 ## Tech stack
 
 Our tech stack is Python 3.12 for ML and backend, Django 5 for the web app, pandas and scikit-learn for data processing and modeling, SQLite for storing predictions, and Git/GitHub for collaboration, with VS Code as our development environment.
@@ -26,6 +28,8 @@ Krishna Koumudi Koravi, Yuliya Hagberg, Yevheniia Kornilova, Snehal Sanjay Patil
 The project uses the **Titanic dataset** provided by Kaggle: https://www.kaggle.com/c/titanic/data
 
 ## How to set up and run the project locally
+
+The following instructions explain how to run the project locally for development and testing.
 
 ### 1. Clone the repo
 ```bash
@@ -105,3 +109,22 @@ Total number of family members traveling together (SibSp + Parch + 1).
 Binary feature indicating whether a passenger was traveling alone.
 
 These features help models learn survival patterns related to age priority, wealth, and group dynamics.
+
+## System architecture overview
+
+The system follows a simple full-stack architecture that connects a machine learning workflow with a web application.
+
+1. **Front-end (Django templates & Bootstrap)**  
+   Users interact with the application through HTML forms styled with Bootstrap. The prediction form collects passenger information such as class, age, sex, fare, and embarkation port.
+
+2. **Back-end (Django views & forms)**  
+   Django handles form validation, feature engineering, and application logic. After the form is submitted, the backend prepares the input data for the machine learning model.
+
+3. **Machine learning (pandas & scikit-learn)**  
+   A trained machine learning model is used to predict survival probability based on the processed input features.
+
+4. **Database (SQLite)**  
+   Each prediction, along with the input features and model output, is stored in a SQLite database. This allows predictions to be reviewed later on the History page.
+
+5. **Results and history pages**  
+   The prediction result is shown immediately after submission and all past predictions can be viewed in a dedicated history view.
