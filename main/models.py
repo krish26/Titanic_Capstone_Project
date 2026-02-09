@@ -41,7 +41,7 @@ class Prediction(models.Model):
         }.get(self.embarked, "Unknown")
     
     def alone_label(self):
-        return "Yes" if self.sex == 1 else "No"
+        return "Yes" if self.sex == 0 else "No"
 
     def __str__(self):
         return f"Prediction #{self.id} | Survived: {self.survived}"
