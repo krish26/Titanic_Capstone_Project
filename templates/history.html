@@ -4,7 +4,7 @@
 
 <div class="container mt-4">
     <h1 class="fw-bold mb-4">Titanic Capstone Project</h1>
-    
+
     <div class="card mb-4 shadow-sm">
         <div class="card-body">
             <h2 class="h4 mb-3">History</h2>
@@ -21,6 +21,7 @@
                                 <th>Embarked</th>
                                 <th>Family size</th>
                                 <th>Is alone</th>
+                                <th>Survival probability</th>
                                 <th>Survived</th>
                             </tr>
                         </thead>
@@ -35,6 +36,7 @@
                                     <td>{{ p.embarked_label }}</td>
                                     <td>{{ p.family_size }}</td>
                                     <td>{{ p.alone_label }}</td>
+                                    <td>{{ p.survival_probability }}</td>
                                     <td>
                                         {% if p.survived %}
                                             <span class="badge bg-success">Yes</span>
