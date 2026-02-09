@@ -3,6 +3,11 @@
 my_data/
 my_model.ipynb
 
+
+#personal(krishna koumudi local only)
+my_data/
+model.ipynb
+
 # Python
 __pycache__/
 *.pyc
