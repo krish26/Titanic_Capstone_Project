@@ -3,10 +3,10 @@ from django.db import models
 class Prediction(models.Model):
     # ===== Input features from form =====
     pclass = models.IntegerField()
-    sex = models.CharField(max_length=10)
+    sex = models.IntegerField()
     age = models.FloatField(null=True, blank=True)
     fare = models.FloatField(null=True, blank=True)
-    embarked = models.CharField(max_length=1)
+    embarked = models.IntegerField()
 
     family_size = models.IntegerField(null=True, blank=True)
     is_alone = models.BooleanField(default=False)
