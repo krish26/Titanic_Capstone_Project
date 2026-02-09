@@ -33,8 +33,8 @@ def prediction_form(request):
             )
 
             return render(request, "results.html", {"prediction": prediction})
-        else:
-            form = forms.PredictionForm()
+    else:
+        form = forms.PredictionForm()
 
     return render(request, 'prediction_form.html', {'form': form})
 
