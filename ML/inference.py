@@ -23,14 +23,20 @@ def get_age_group(age):
 
 
 def get_fare_group(fare):
-    if fare < 10:
+    """
+    Assign FareGroup based on the original training data distribution.
+    Thresholds are derived from the min/max values of Fare within each
+    FareGroup used during model training to avoid training–inference skew.
+    """
+    if fare <= 7.8958:
         return "Low"
-    elif fare < 30:
+    elif fare <= 14.4542:
         return "Mid"
-    elif fare < 100:
+    elif fare <= 31.0:
         return "High"
     else:
         return "VeryHigh"
+
     
   
 def get_title(sex: int, age: float):
