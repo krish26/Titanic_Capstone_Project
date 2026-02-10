@@ -4,7 +4,7 @@ from pathlib import Path
 
 # Load model once
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "models" / "LR_Model.joblib"
+MODEL_PATH = BASE_DIR / "models" / "RF_Model.joblib"
 
 model = joblib.load(MODEL_PATH)
 
@@ -16,8 +16,8 @@ def get_age_group(age):
         return "Teen"
     elif age < 35:
         return "YoungAdult"
-    # elif age < 60:
-    #     return "Adult"
+    elif age < 60:
+        return "Adult"
     else:
         return "Senior"
 
@@ -27,10 +27,31 @@ def get_fare_group(fare):
         return "Low"
     elif fare < 30:
         return "Mid"
-    # elif fare < 100:
-    #     return "High"
+    elif fare < 100:
+        return "High"
     else:
         return "VeryHigh"
+    
+  
+def get_title(sex: int, age: float):
+    """
+    sex: 0 = male, 1 = female
+    """
+    if sex == 0:
+        if age < 12:
+            return "Master"
+        else:
+            return "Mr"
+    else:
+        if age < 18:
+           return "Miss"
+        else:
+            return "Mrs"
+        
+
+    if sex == 1:
+        return "Miss" if age < 18 else "Mrs"
+    return "Mr"
     
 # Inference
 def predict_survival(data: dict):
@@ -57,14 +78,14 @@ def predict_survival(data: dict):
     # Categorical features
     df["AgeGroup"] = get_age_group(data["age"])
     df["FareGroup"] = get_fare_group(data["fare"])
+    df["Title"] = get_title(data["sex"], data["age"])
 
     df = pd.get_dummies(
         df,
-        columns=["AgeGroup", "FareGroup"],
-        # drop_first=True
+        columns=["AgeGroup", "FareGroup", "Title"],
     )
 
-    #Ensure all 17 features exist
+    # Align with model features(from model training dataframe)
     expected_columns = list(model.feature_names_in_)
 
     for col in expected_columns:
