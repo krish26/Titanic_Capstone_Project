@@ -12,7 +12,7 @@ model = joblib.load(MODEL_PATH)
 def get_age_group(age):
     if age < 12:
         return "Child"
-    elif age < 20:
+    elif age < 18:
         return "Teen"
     elif age < 35:
         return "YoungAdult"
@@ -36,7 +36,6 @@ def get_fare_group(fare):
         return "High"
     else:
         return "VeryHigh"
-
     
   
 def get_title(sex: int, age: float):
@@ -53,12 +52,7 @@ def get_title(sex: int, age: float):
            return "Miss"
         else:
             return "Mrs"
-        
-
-    if sex == 1:
-        return "Miss" if age < 18 else "Mrs"
-    return "Mr"
-    
+ 
 # Inference
 def predict_survival(data: dict):
     """
