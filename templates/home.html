@@ -67,7 +67,68 @@
     <div class="card mb-4 shadow-sm">
         <div class="card-body">
             <h2 class="h4 mb-3">Description of the machine learning model</h2>
-            <p>Coming soon..</p>
+            <p>This project uses supervised machine learning models to predict whether a passenger survived the Titanic disaster. 
+                The target variable is Survived, which is a binary classification problem (survived or not survived).
+            </p>
+
+            <h3 class="h5 mb-3">Data preparation</h3>
+            <p>Before training the models, the dataset was preprocessed as follows:</p>
+            <ul>
+                <li>
+                    <p>Unused or non-informative columns such as PassengerId, Name, Ticket, and Cabin were removed.</p>
+                </li>
+                <li>
+                    <p>Missing values were handled during preprocessing.</p>
+                </li>
+                <li>
+                    <p>Categorical features such as AgeGroup and FareGroup were converted into numerical format using one-hot encoding.</p>
+                </li>
+                <li>
+                    <p>The dataset was split into training and testing sets using an 80/20 split.</p>
+                </li>
+            </ul>
+
+            <h3 class="h5 mb-3">Logistic Regression</h3>
+            <p>A Logistic Regression model was trained as a baseline classifier.</p>
+            <ul>
+                <li>
+                    <p>Logistic Regression is a simple and interpretable model commonly used for binary classification tasks.</p>
+                </li>
+                <li>
+                    <p>The model was trained using scikit-learn's LogisticRegression with an increased maximum number of iterations to ensure convergence.</p>
+                </li>
+                <li>
+                    <p>Model performance was evaluated using accuracy, confusion matrix, precision, recall, and F1-score.</p>
+                </li>
+            </ul>
+            <p>The Logistic Regression model achieved an accuracy of approximately <strong>81,6%</strong> on the test set, providing a strong and interpretable baseline.</p>
+
+            <h3 class="h5 mb-3">Random Forest</h3>
+            <p>A Random Forest classifier was also trained to capture more complex patterns in the data.</p>
+            <ul>
+                <li>
+                    <p>Random Forest is an ensemble model that combines multiple decision trees to improve prediction accuracy and reduce overfitting.</p>
+                </li>
+                <li>
+                    <p>The model was trained with tuned hyperparameters such as the number of trees, tree depth, and minimum samples per split.</p>
+                </li>
+                <li>
+                    <p>Model performance was evaluated using accuracy, confusion matrix, precision, recall, and F1-score.</p>
+                </li>
+            </ul>
+            <p>The Random Forest model achieved an accuracy of approximately <strong>82,1%</strong>. While the accuracy was quite similar to Logistic Regression, Random Forest demonstrated better flexibility in modeling non-linear feature interactions.</p>
+
+            <h3 class="h5 mb-3">Model selection</h3>
+            <p>Both models were trained and evaluated to compare performance and interpretability:</p>
+            <ul>
+                <li>
+                    <p>Logistic Regression was used as a baseline model due to its simplicity and transparency.</p>
+                </li>
+                <li>
+                    <p>Random Forest was selected as the final model due to its better predictive performance.</p>
+                </li>
+            </ul>
+            <p>The trained model is saved and integrated into the Django web application to generate survival predictions based on user input.</p>
         </div>
     </div>
 
