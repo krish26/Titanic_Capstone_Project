@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .forms import PredictionForm
+from .models import Prediction
 
 class PredictionFormTest(TestCase):
 
@@ -71,3 +72,30 @@ class PredictionFormTest(TestCase):
         form = PredictionForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn("fare", form.errors)
+
+
+class PredictionModelTest(TestCase):
+
+    def test_prediction_creation(self):
+        prediction = Prediction.objects.create(
+            pclass=2,
+            sex=1,
+            age=20,
+            fare=100,
+            embarked=1,
+            family_size=1,
+            is_alone=True,
+            survived=False,
+            survival_probability=0.10
+        )
+
+        self.assertEqual(prediction.pclass, 2)
+        self.assertEqual(prediction.sex, 1)
+        self.assertEqual(prediction.age, 20)
+        self.assertEqual(prediction.fare, 100)
+        self.assertEqual(prediction.embarked, 1)
+        self.assertEqual(prediction.family_size, 1)
+        self.assertTrue(prediction.is_alone)
+        self.assertFalse(prediction.survived)
+        self.assertEqual(prediction.survival_probability, 0.10)
+        self.assertIsNotNone(prediction.created_at)
