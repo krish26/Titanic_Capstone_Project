@@ -110,6 +110,39 @@ Binary feature indicating whether a passenger was traveling alone.
 
 These features help models learn survival patterns related to age priority, wealth, and group dynamics.
 
+## Description of the machine learning model
+This project uses supervised machine learning models to predict whether a passenger survived the Titanic disaster. The target variable is Survived, which is a binary classification problem (survived or not survived).
+
+### Data preparation
+Before training the models, the dataset was preprocessed as follows:
+- Unused or non-informative columns such as PassengerId, Name, Ticket, and Cabin were removed.
+- Missing values were handled during preprocessing.
+- Categorical features such as AgeGroup and FareGroup were converted into numerical format using one-hot encoding.
+- The dataset was split into training and testing sets using an 80/20 split.
+
+### Logistic Regression
+A Logistic Regression model was trained as a baseline classifier.
+- Logistic Regression is a simple and interpretable model commonly used for binary classification tasks.
+- The model was trained using scikit-learn’s LogisticRegression with an increased maximum number of iterations to ensure convergence.
+- Model performance was evaluated using accuracy, confusion matrix, precision, recall, and F1-score.
+
+The Logistic Regression model achieved an accuracy of approximately **81,6%** on the test set, providing a strong and interpretable baseline.
+
+### Random Forest
+A Random Forest classifier was also trained to capture more complex patterns in the data.
+- Random Forest is an ensemble model that combines multiple decision trees to improve prediction accuracy and reduce overfitting.
+- The model was trained with tuned hyperparameters such as the number of trees, tree depth, and minimum samples per split.
+- Model performance was evaluated using accuracy, confusion matrix, precision, recall, and F1-score.
+
+The Random Forest model achieved an accuracy of approximately **82,1%**. While the accuracy was quite similar to Logistic Regression, Random Forest demonstrated better flexibility in modeling non-linear feature interactions.
+
+### Model selection
+Both models were trained and evaluated to compare performance and interpretability:
+- Logistic Regression was used as a baseline model due to its simplicity and transparency.
+- Random Forest was selected as the final model due to its better predictive performance.
+
+The trained model is saved and integrated into the Django web application to generate survival predictions based on user input.
+
 ## System architecture overview
 
 The system follows a simple full-stack architecture that connects a machine learning workflow with a web application.
