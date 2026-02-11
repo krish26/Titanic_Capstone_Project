@@ -1,4 +1,5 @@
 from django import forms
+from .models import Prediction
 
 class PredictionForm(forms.Form):
 
@@ -8,8 +9,8 @@ class PredictionForm(forms.Form):
     )
 
     sex = forms.ChoiceField(
-        choices=[(0, "Male"), (1, "Female")],
-        label="Sex"
+    choices=Prediction.SEX_CHOICES,
+    label="Sex"
     )
 
     age = forms.IntegerField(
@@ -37,6 +38,6 @@ class PredictionForm(forms.Form):
     )
 
     embarked = forms.ChoiceField(
-        choices=[(1, "Cherbourg"), (2, "Queenstown"), (3, "Southampton")],
-        label="Embarked in port"
+    choices=Prediction.EMBARKED_CHOICES,
+    label="Embarked in port"
     )
