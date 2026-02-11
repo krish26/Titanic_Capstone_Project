@@ -1,6 +1,7 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from .forms import PredictionForm
 from .models import Prediction
+from django.urls import reverse
 
 class PredictionFormTest(TestCase):
 
@@ -32,18 +33,18 @@ class PredictionFormTest(TestCase):
         self.assertIn("age", form.errors)
 
     def test_invalid_sibsp(self):
-            form_data = {
-                "pclass": 1,
-                "sex": 0,
-                "age": 5,
-                "sibsp": -1,
-                "parch": 0,
-                "fare": 10,
-                "embarked": 1,
-            }
-            form = PredictionForm(data=form_data)
-            self.assertFalse(form.is_valid())
-            self.assertIn("sibsp", form.errors)
+        form_data = {
+            "pclass": 1,
+            "sex": 0,
+            "age": 5,
+            "sibsp": -1,
+            "parch": 0,
+            "fare": 10,
+            "embarked": 1,
+        }
+        form = PredictionForm(data=form_data)
+        self.assertFalse(form.is_valid())
+        self.assertIn("sibsp", form.errors)
 
     def test_invalid_parch(self):
         form_data = {
@@ -63,7 +64,7 @@ class PredictionFormTest(TestCase):
         form_data = {
             "pclass": 1,
             "sex": 0,
-            "age": -5,
+            "age": 5,
             "sibsp": 0,
             "parch": 3,
             "fare": -20,
@@ -73,6 +74,18 @@ class PredictionFormTest(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn("fare", form.errors)
 
+    def test_invalid_form_missing_field(self):
+        form_data = {
+            "pclass": 1,
+            "sex": 0,
+            # "age": 5,
+            "sibsp": 0,
+            "parch": 3,
+            "fare": 20,
+            "embarked": 1,
+        }
+        form = PredictionForm(data=form_data)
+        self.assertFalse(form.is_valid())
 
 class PredictionModelTest(TestCase):
 
@@ -99,3 +112,39 @@ class PredictionModelTest(TestCase):
         self.assertFalse(prediction.survived)
         self.assertEqual(prediction.survival_probability, 0.10)
         self.assertIsNotNone(prediction.created_at)
+
+class PredictionViewTest(TestCase):
+
+    def test_home_page(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Titanic Capstone Project")
+
+    def test_form_page(self):
+        response = self.client.get('/predict/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Fill out the form")
+
+    # def test_results_page(self):
+    #     response = self.client.get('/results/')
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertContains(response, "Results")
+    
+    def test_history_page(self):
+        response = self.client.get('/history/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "History")
+
+    def test_form_submission_creates_object(self):
+        form_data = {
+            "pclass": 1,
+            "sex": 0,
+            "age": 5,
+            "sibsp": 0,
+            "parch": 3,
+            "fare": 20,
+            "embarked": 1,
+        }
+        
+        self.client.post(reverse("prediction_form"), data=form_data)
+        self.assertEqual(Prediction.objects.count(), 1)
