@@ -134,7 +134,7 @@ A Random Forest classifier was also trained to capture more complex patterns in 
 - The model was trained with tuned hyperparameters such as the number of trees, tree depth, and minimum samples per split.
 - Model performance was evaluated using accuracy, confusion matrix, precision, recall, and F1-score.
 
-The Random Forest model achieved an accuracy of approximately **82,1%**. While the accuracy was quite similar to Logistic Regression, Random Forest demonstrated better flexibility in modeling non-linear feature interactions.
+The Random Forest model achieved an accuracy of approximately **83,2%**. While the accuracy was quite similar to Logistic Regression, Random Forest demonstrated better flexibility in modeling non-linear feature interactions.
 
 ### Model selection
 Both models were trained and evaluated to compare performance and interpretability:
