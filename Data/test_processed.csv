@@ -30,7 +30,7 @@ PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked,HasCabin,
 920,1,"Brady, Mr. John Bertram",0,41.0,0,0,113054,30.5,A21,1,1,Adult,High,1,1
 921,3,"Samaan, Mr. Elias",0,,2,0,2662,21.6792,,2,0,,High,3,0
 922,2,"Louch, Mr. Charles Alexander",0,50.0,1,0,SC/AH 3085,26.0,,1,0,Adult,High,2,0
-923,2,"Jefferys, Mr. Clifford Thomas",0,24.0,2,0,C.A. 31029,31.5,,1,0,YoungAdult,VeryHigh,3,0
+923,2,"Jefferys, Mr. Clifford Thomas",0,24.0,2,0,C.A. 31029,31.5,,1,0,YoungAdult,High,3,0
 924,3,"Dean, Mrs. Bertram (Eva Georgetta Light)",1,33.0,1,2,C.A. 2315,20.575,,1,0,YoungAdult,High,4,0
 925,3,"Johnston, Mrs. Andrew G (Elizabeth Lily"" Watson)""",1,,1,2,W./C. 6607,23.45,,1,0,,High,4,0
 926,1,"Mock, Mr. Philipp Edmund",0,30.0,1,0,13236,57.75,C78,2,1,YoungAdult,VeryHigh,2,0
@@ -151,7 +151,7 @@ PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked,HasCabin,
 1041,2,"Lahtinen, Rev. William",0,30.0,1,1,250651,26.0,,1,0,YoungAdult,High,3,0
 1042,1,"Earnshaw, Mrs. Boulton (Olive Potter)",1,23.0,0,1,11767,83.1583,C54,2,1,YoungAdult,VeryHigh,2,0
 1043,3,"Matinoff, Mr. Nicola",0,,0,0,349255,7.8958,,2,0,,Low,1,1
-1044,3,"Storey, Mr. Thomas",0,60.5,0,0,3701,14.4542,,1,0,Senior,Mid,1,1
+1044,3,"Storey, Mr. Thomas",0,60.5,0,0,3701,,,1,0,Senior,,1,1
 1045,3,"Klasen, Mrs. (Hulda Kristina Eugenia Lofqvist)",1,36.0,0,2,350405,12.1833,,1,0,Adult,Mid,3,0
 1046,3,"Asplund, Master. Filip Oscar",0,13.0,4,2,347077,31.3875,,1,0,Teen,High,7,0
 1047,3,"Duquemin, Mr. Joseph",0,24.0,0,0,S.O./P.P. 752,7.55,,1,0,YoungAdult,Low,1,1
@@ -318,7 +318,7 @@ PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked,HasCabin,
 1208,1,"Spencer, Mr. William Augustus",0,57.0,1,0,PC 17569,146.5208,B78,2,1,Adult,VeryHigh,2,0
 1209,2,"Rogers, Mr. Reginald Harry",0,19.0,0,0,28004,10.5,,1,0,YoungAdult,Mid,1,1
 1210,3,"Jonsson, Mr. Nils Hilding",0,27.0,0,0,350408,7.8542,,1,0,YoungAdult,Low,1,1
-1211,2,"Jefferys, Mr. Ernest Wilfred",0,22.0,2,0,C.A. 31029,31.5,,1,0,YoungAdult,VeryHigh,3,0
+1211,2,"Jefferys, Mr. Ernest Wilfred",0,22.0,2,0,C.A. 31029,31.5,,1,0,YoungAdult,High,3,0
 1212,3,"Andersson, Mr. Johan Samuel",0,26.0,0,0,347075,7.775,,1,0,YoungAdult,Low,1,1
 1213,3,"Krekorian, Mr. Neshan",0,25.0,0,0,2654,7.2292,F E57,2,1,YoungAdult,Low,1,1
 1214,2,"Nesson, Mr. Israel",0,26.0,0,0,244368,13.0,F2,1,1,YoungAdult,Mid,1,1
@@ -337,7 +337,7 @@ PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked,HasCabin,
 1227,1,"Maguire, Mr. John Edward",0,30.0,0,0,110469,26.0,C106,1,1,YoungAdult,High,1,1
 1228,2,"de Brito, Mr. Jose Joaquim",0,32.0,0,0,244360,13.0,,1,0,YoungAdult,Mid,1,1
 1229,3,"Elias, Mr. Joseph",0,39.0,0,2,2675,7.2292,,2,0,Adult,Low,3,0
-1230,2,"Denbury, Mr. Herbert",0,25.0,0,0,C.A. 31029,31.5,,1,0,YoungAdult,VeryHigh,1,1
+1230,2,"Denbury, Mr. Herbert",0,25.0,0,0,C.A. 31029,31.5,,1,0,YoungAdult,High,1,1
 1231,3,"Betros, Master. Seman",0,,0,0,2622,7.2292,,2,0,,Low,1,1
 1232,2,"Fillbrook, Mr. Joseph Charles",0,18.0,0,0,C.A. 15185,10.5,,1,0,Teen,Mid,1,1
 1233,3,"Lundstrom, Mr. Thure Edvin",0,32.0,0,0,350403,7.5792,,1,0,YoungAdult,Low,1,1
