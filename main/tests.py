@@ -145,6 +145,8 @@ class PredictionViewTest(TestCase):
             "fare": 20,
             "embarked": 1,
         }
-        
+
         self.client.post(reverse("prediction_form"), data=form_data)
         self.assertEqual(Prediction.objects.count(), 1)
+
+# =========== ML tests ================

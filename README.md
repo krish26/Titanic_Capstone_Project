@@ -161,3 +161,7 @@ The system follows a simple full-stack architecture that connects a machine lear
 
 5. **Results and history pages**  
    The prediction result is shown immediately after submission and all past predictions can be viewed in a dedicated history view.
+
+## Unittest
+
+TODO: Write a summary of our tests.
