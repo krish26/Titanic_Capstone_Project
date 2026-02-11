@@ -5,8 +5,10 @@ from pathlib import Path
 # Load model once
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "models" / "RF_Model.joblib"
+FEATURES_PATH = BASE_DIR / "models" / "feature_cols.pkl"
 
 model = joblib.load(MODEL_PATH)
+feature_columns = joblib.load(FEATURES_PATH)
 
 # Helper functions
 def get_age_group(age):
@@ -86,7 +88,7 @@ def predict_survival(data: dict):
     )
 
     # Align with model features(from model training dataframe)
-    expected_columns = list(model.feature_names_in_)
+    expected_columns = feature_columns
 
     for col in expected_columns:
         if col not in df.columns:
