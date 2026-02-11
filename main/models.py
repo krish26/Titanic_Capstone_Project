@@ -15,8 +15,8 @@ class Prediction(models.Model):
     # ===== Input features from form =====
     pclass = models.IntegerField()
     sex = models.IntegerField(choices=SEX_CHOICES)
-    age = models.FloatField(null=True, blank=True)
-    fare = models.FloatField(null=True, blank=True)
+    age = models.FloatField()
+    fare = models.FloatField()
     embarked = models.IntegerField(choices=EMBARKED_CHOICES)
 
     family_size = models.IntegerField(null=True, blank=True)
