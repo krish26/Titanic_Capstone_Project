@@ -24,7 +24,11 @@ class Prediction(models.Model):
 
     # ===== Model output =====
     survived = models.BooleanField()
-    survival_probability = models.FloatField(null=True, blank=True)
+    survival_probability = models.DecimalField(max_digits=6, decimal_places=4, default=0.0)
+
+    @property
+    def probability_percent(self):
+        return self.survival_probability * 100
 
     # ===== Meta =====
     created_at = models.DateTimeField(auto_now_add=True)
