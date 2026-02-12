@@ -70,11 +70,11 @@ python manage.py migrate          # only if models changed
 ## Data Processing Decisions
 
 We made a few simple decisions to handle missing and categorical data:
-- Missing values in Age were filled using the mean age so that we could keep all rows in the dataset.
-- The Cabin column was removed because it contains many missing values and did not clearly affect survival.
-- Encode Categorical Variable (Sex Column) by conveting it into numerical format as (female= 1, male= 0).
-- Missing values in Embarked were filled with the most common port.
-- The Embarked ports were encoded as numbers from 1 to 3 to make them usable for the model.
+- Missing values in `Age` were filled using the mean age so that we could keep all rows in the dataset.
+- The `Cabin` column was removed because it contains many missing values and did not clearly affect survival.
+- Encode Categorical Variable (`Sex`) by conveting it into numerical format as (female= 1, male= 0).
+- Missing values in `Embarked` were filled with the most common port.
+- The `Embarked` ports were encoded as numbers from 1 to 3 to make them usable for the model.
 
 These choices helped us keep the data clean and easy to work with while preparing it for machine learning.
 
@@ -103,7 +103,7 @@ Ticket fares are grouped into quartiles (Low → VeryHigh) to represent socio-ec
 - Models can now learn that higher fare → higher survival probability without being dominated by extreme values.
 
 ### **FamilySize**
-Total number of family members traveling together (SibSp + Parch + 1).
+Total number of family members traveling together (`SibSp` + `Parch` + 1).
 
 ### **IsAlone**
 Binary feature indicating whether a passenger was traveling alone.
@@ -115,9 +115,9 @@ This project uses supervised machine learning models to predict whether a passen
 
 ### Data preparation
 Before training the models, the dataset was preprocessed as follows:
-- Unused or non-informative columns such as PassengerId, Name, Ticket, and Cabin were removed.
+- Unused or non-informative columns such as `PassengerId`, `Name`, `Ticket`, and `Cabin` were removed.
 - Missing values were handled during preprocessing.
-- Categorical features such as AgeGroup and FareGroup were converted into numerical format using one-hot encoding.
+- Categorical features such as `AgeGroup` and `FareGroup` were converted into numerical format using one-hot encoding.
 - The dataset was split into training and testing sets using an 80/20 split.
 
 ### Logistic Regression
@@ -164,4 +164,38 @@ The system follows a simple full-stack architecture that connects a machine lear
 
 ## Unittest
 
-TODO: Write a summary of our tests.
+To ensure reliability and correctness, unit tests were implemented using Django’s built-in testing framework (based on Python’s `unittest`).
+The test suite covers the following components:
+
+### Form validation tests
+The `PredictionForm` is tested to ensure proper validation of user input. Tests include:
+- Valid form submission
+- Negative or invalid values for age, sibsp, parch, and fare
+- Missing required fields
+
+These tests verify that incorrect input is properly rejected and that validation rules work as expected.
+
+### Model tests
+The `Prediction` model is tested to confirm:
+- Objects can be successfully created
+- All fields are stored correctly
+- The `created_at` timestamp is automatically generated
+
+This ensures database integrity and correct model behavior.
+
+### View tests
+View tests verify that:
+- The home page loads successfully
+- The prediction form page loads correctly
+- The history page loads correctly
+- Submitting the prediction form creates a new `Prediction` object in the database
+
+These tests validate the full request–response cycle and confirm that the application behaves correctly from a user perspective.
+
+### Running tests
+
+To run the test suite locally:
+
+```bash
+python manage.py test
+```
