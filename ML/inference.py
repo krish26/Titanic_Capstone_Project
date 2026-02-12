@@ -2,6 +2,14 @@ import pandas as pd
 import joblib
 from pathlib import Path
 
+"""
+Pure ML inference layer.
+
+Receives raw passenger features,
+performs feature engineering,
+returns prediction + probability.
+"""
+
 # Load model once
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "models" / "RF_Model.joblib"
@@ -56,11 +64,39 @@ def get_title(sex: int, age: float):
             return "Mrs"
  
 # Inference
+def engineer_features(data: dict) -> dict:
+    family_size = data["sibsp"] + data["parch"] + 1
+    is_alone = family_size == 1
+
+    enriched = data.copy()
+    enriched["family_size"] = family_size
+    enriched["is_alone"] = is_alone
+
+    return enriched
+
 def predict_survival(data: dict):
+    
+    data = engineer_features(data)
+
     """
     data keys:
     pclass, sex, age, sibsp, parch, fare, embarked, family_size, is_alone
     """
+    required = [
+        "pclass",
+        "sex",
+        "age",
+        "sibsp",
+        "parch",
+        "fare",
+        "embarked",
+        "family_size",
+        "is_alone",
+    ]
+
+    for key in required:
+        if key not in data:
+            raise ValueError(f"Missing field: {key}")
 
     row = {
         "Pclass": data["pclass"],
@@ -87,7 +123,7 @@ def predict_survival(data: dict):
         columns=["AgeGroup", "FareGroup", "Title"],
     )
 
-    # Align with model features(from model training dataframe)
+    # Align with model features(from training pipeline)
     expected_columns = feature_columns
 
     for col in expected_columns:

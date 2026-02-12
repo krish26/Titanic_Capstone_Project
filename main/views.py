@@ -14,11 +14,7 @@ def prediction_form(request):
         if form.is_valid():
             data = form.cleaned_data
 
-            # Feature engineering
-            family_size = data["sibsp"] + data["parch"] + 1
-            is_alone = family_size == 1
-
-            # Prepare features for ML model
+            # Prepare features for ML model (no feature engineering here)
             features = {
                 "pclass": int(data["pclass"]),
                 "sex": int(data["sex"]),
@@ -27,12 +23,14 @@ def prediction_form(request):
                 "parch": data["parch"],
                 "fare": data["fare"],
                 "embarked": int(data["embarked"]),
-                "family_size": family_size,
-                "is_alone": is_alone,
             }
 
-            # Model predictions
+            # ML prediction (feature engineering happens inside ML layer)
             survived, survival_probability = predict_survival(features)
+
+            # Django-side derived fields (for DB storage only)
+            family_size = data["sibsp"] + data["parch"] + 1
+            is_alone = family_size == 1
             
             # Save prediction to DB
             prediction = Prediction.objects.create(
