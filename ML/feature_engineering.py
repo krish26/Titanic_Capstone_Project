@@ -2,6 +2,19 @@ import pandas as pd
 import numpy as np
 
 def engineer_features(df: pd.DataFrame):
+    # Title extraction from Name
+    df['Title'] = df['Name'].str.extract(' ([A-Za-z]+)\.', expand=False)
+
+    # Standardize some titles
+    df['Title'] = df['Title'].replace({
+        'Mlle': 'Miss',
+        'Ms': 'Miss',
+        'Mme': 'Mrs'
+    })
+
+    # Replace rare titles with 'Rare'
+    rare_titles = ["Lady","Countess","Capt","Col","Don","Dr","Major","Rev","Sir","Jonkheer","Dona"]
+    df['Title'] = df['Title'].replace(rare_titles, "Rare")
 
     # Age binning
     df['AgeGroup'] = pd.cut(
