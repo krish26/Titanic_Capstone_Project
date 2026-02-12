@@ -64,7 +64,20 @@ def get_title(sex: int, age: float):
             return "Mrs"
  
 # Inference
+def engineer_features(data: dict) -> dict:
+    family_size = data["sibsp"] + data["parch"] + 1
+    is_alone = family_size == 1
+
+    enriched = data.copy()
+    enriched["family_size"] = family_size
+    enriched["is_alone"] = is_alone
+
+    return enriched
+
 def predict_survival(data: dict):
+    
+    data = engineer_features(data)
+
     """
     data keys:
     pclass, sex, age, sibsp, parch, fare, embarked, family_size, is_alone
