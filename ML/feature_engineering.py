@@ -17,6 +17,9 @@ def engineer_features(df: pd.DataFrame):
     rare_titles = ["Lady","Countess","Capt","Col","Don","Dr","Major","Rev","Sir","Jonkheer","Dona"]
     df['Title'] = df['Title'].replace(rare_titles, "Rare")
 
+    # Fill missing Age using median age per Title
+    df['Age'] = df.groupby('Title')['Age'].transform(lambda x: x.fillna(x.median()))
+
     # Age binning
     df['AgeGroup'] = pd.cut(
         df['Age'], bins=[0,12,18,35,60,100],
