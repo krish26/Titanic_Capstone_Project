@@ -17,11 +17,11 @@ def engineer_features(df: pd.DataFrame):
     rare_titles = ["Lady","Countess","Capt","Col","Don","Dr","Major","Rev","Sir","Jonkheer","Dona"]
     df['Title'] = df['Title'].replace(rare_titles, "Rare")
 
-    # Age binning to pdata_inspect notebook to manage missing values better and to maintain execution flow.
-    #     # df['AgeGroup'] = pd.cut(
-    #     df['Age'], bins=[0,12,18,35,60,100],
-    #     labels=['Child','Teen','YoungAdult','Adult','Senior']
-    # )
+    # Age binning
+    df['AgeGroup'] = pd.cut(
+        df['Age'], bins=[0,12,18,35,60,100],
+        labels=['Child','Teen','YoungAdult','Adult','Senior']
+    )
 
     # Fare binning
     
