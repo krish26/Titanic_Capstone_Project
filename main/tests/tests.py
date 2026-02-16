@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
-from .forms import PredictionForm
-from .models import Prediction
+from main.forms import PredictionForm
+from main.models import Prediction
 from django.urls import reverse
 
 class PredictionFormTest(TestCase):
