@@ -26,7 +26,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Passenger class: {{ prediction.pclass }}</li>
                     <li class="list-group-item">Sex: {{ prediction.get_sex_display }}</li>
-                    <li class="list-group-item">Age: {{ prediction.age }}</li>
+                    <li class="list-group-item">Age: {{ prediction.age|floatformat:0 }}</li>
                     <li class="list-group-item">Fare: {{ prediction.fare }}</li>
                     <li class="list-group-item">Embarked: {{ prediction.get_embarked_display }}</li>
                     <li class="list-group-item">Family size: {{ prediction.family_size }}</li>

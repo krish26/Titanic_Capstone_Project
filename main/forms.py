@@ -9,8 +9,8 @@ class PredictionForm(forms.Form):
     )
 
     sex = forms.ChoiceField(
-    choices=Prediction.SEX_CHOICES,
-    label="Sex"
+        choices=Prediction.SEX_CHOICES,
+        label="Sex"
     )
 
     age = forms.IntegerField(
@@ -33,11 +33,11 @@ class PredictionForm(forms.Form):
 
     fare = forms.FloatField(
         min_value=0,
-        max_value=1000,  # TODO: choose a better max_value based on data
+        max_value=600,
         label="Fare"
     )
 
     embarked = forms.ChoiceField(
-    choices=Prediction.EMBARKED_CHOICES,
-    label="Embarked in port"
+        choices=Prediction.EMBARKED_CHOICES,
+        label="Embarked in port"
     )

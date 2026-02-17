@@ -31,7 +31,7 @@
                                     <td>{{ p.created_at }}</td>
                                     <td>{{ p.pclass }}</td>
                                     <td>{{ p.sex_label }}</td>
-                                    <td>{{ p.age }}</td>
+                                    <td>{{ p.age|floatformat:0 }}</td>
                                     <td>{{ p.fare }}</td>
                                     <td>{{ p.embarked_label }}</td>
                                     <td>{{ p.family_size }}</td>
