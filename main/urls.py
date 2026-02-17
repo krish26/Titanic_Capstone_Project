@@ -7,3 +7,5 @@ urlpatterns = [
     path('history/', views.history, name='history'),
     path('results/<int:prediction_id>/', views.results, name='results'),
 ]
+
+# Dynamic URLs (like results/<int:prediction_id>/) allow views to fetch and display specific prediction records.
